@@ -11,12 +11,154 @@
         .h1 {
             font-weight: bold;
         }
+
+        /* 新增的轮播图样式 */
+        .carousel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .carousel-slide {
+            display: none;
+            width: 100%;
+        }
+        
+        .carousel-slide.active {
+            display: block;
+        }
+        
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .carousel-slide img:hover {
+            transform: scale(1.02);
+        }
+        
+        .carousel-caption {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 16px;
+        }
+        
+        .carousel-prev, .carousel-next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: none;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            transition: 0.3s ease;
+        }
+        
+        .carousel-next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .carousel-prev:hover, .carousel-next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .carousel-dots {
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .carousel-dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .carousel-dot.active, .carousel-dot:hover {
+            background-color: #717171;
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .carousel-caption {
+                font-size: 14px;
+                padding: 8px;
+            }
+            
+            .carousel-prev, .carousel-next {
+                padding: 12px;
+                font-size: 16px;
+            }
+            
+            .carousel-dot {
+                height: 10px;
+                width: 10px;
+                margin: 0 4px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="container mt-5">
         <h1 class="text-center mb-4 h1">启仔地址发布页</h1>
+        
+        <!-- 新增的轮播图部分 -->
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <a href="https://172.lot-ml.com/ProductEn/Index/9bda7d18eb4ce972" target="_blank">
+                    <img src="https://172.lot-ml.com/images/center_banner3.jpg" alt="爆款靓号">
+                    <div class="carousel-caption">爆款靓号</div>
+                </a>
+            </div>
+            
+            <div class="carousel-slide">
+                <a href="https://172.lot-ml.com/ProductEn/TyIndex/9bda7d18eb4ce972" target="_blank">
+                    <img src="https://172.lot-ml.com/images/center_banner1.jpg" alt="各省内超大流量卡">
+                    <div class="carousel-caption">各省内超大流量卡</div>
+                </a>
+            </div>
+            
+            <div class="carousel-slide">
+                <a href="https://172.lot-ml.com/ProductEn/KdIndex/9bda7d18eb4ce972" target="_blank">
+                    <img src="https://bu.dusays.com/2025/03/14/67d3c1e9ad8de.png" alt="超值宽带">
+                    <div class="carousel-caption">超值宽带</div>
+                </a>
+            </div>
+            
+            <button class="carousel-prev">&#10094;</button>
+            <button class="carousel-next">&#10095;</button>
+            
+            <div class="carousel-dots">
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+            </div>
+        </div>
+
         <div class="row justify-content-center mt-4">
             <div class="col-md-3 gy-3">
                 <div class="card shadow">
@@ -24,7 +166,6 @@
                         <img src="img/gzhrjtj.jpg" class="card-img-top" alt="点击前往公众号日常推荐软件列表页面">
                     </a>
                     <div class="card-body">
-                        <!-- <h5 class="card-title">公众号软件推荐</h5> -->
                         <p class="card-text">公众号日常推荐</p>
                         <div class="text-center">
                             <a href="https://www.kdocs.cn/l/crn8TrfU9bHv" class="btn btn-primary">点击前往</a>
@@ -38,7 +179,6 @@
                         <img src="img/rjml.jpg" class="card-img-top" alt="点击前往软件目录页面">
                     </a>
                     <div class="card-body">
-                        <!-- <h5 class="card-title">软件目录</h5> -->
                         <p class="card-text">聚合热门软件，长期更新！</p>
                         <div class="text-center">
                             <a href="https://mp.weixin.qq.com/s/pjhRbQFnV0mAMxXJyqXtNw" class="btn btn-primary">点击前往</a>
@@ -47,34 +187,7 @@
                 </div>
             </div>
         </div>
-<!-- 
-        <div class="row justify-content-center mt-4" style="display: none;">
-            <div class="col-md-2 gy-2">
-                <div class="card shadow fixed-width-card">
-                    <img src="img/qrcode.jpg" class="card-img-top" alt="扫码关注公众号">
-                    <div class="card-body">
-                        <p class="card-text">扫码关注<br>陆小启公众号</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 gy-2">
-                <div class="card shadow fixed-width-card">
-                    <img src="img/qrcode.jpg" class="card-img-top" alt="扫码关注公众号">
-                    <div class="card-body">
-                        <p class="card-text">扫码关注<br>陆小启公众号</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 gy-2">
-                <div class="card shadow fixed-width-card">
-                    <img src="img/qrcode.jpg" class="card-img-top" alt="扫码关注公众号">
-                    <div class="card-body">
-                        <p class="card-text">扫码关注<br>陆小启公众号</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        -->
+
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
                 <h2>
@@ -88,7 +201,6 @@
                 <p>获取更多资源请关注公众号「陆小启」</p>
                 <p>回复「获取资源」获得更多资源</p>
                 
-                <!-- 二维码容器 -->
                 <div class="qr-code-container d-inline-block position-relative">
                     <img 
                         src="img/qrcode.jpg" 
@@ -106,37 +218,68 @@
                 </p>
             </div>
         </div>
-        
-        <style>
-            /* 响应式适配 */
-            .qr-code-img {
-                max-width: 200px; /* 默认尺寸 */
-                height: auto;
-                transform-origin: center;
-            }
-        
-            @media (max-width: 768px) {
-                .qr-code-img {
-                    max-width: 150px; /* 移动端缩小尺寸 */
-                }
-            }
-        
-            /* 悬停动效 */
-            .qr-code-img:hover {
-                transform: scale(1.1);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                z-index: 10; /* 确保放大时覆盖其他元素 */
-            }
-        
-            /* 容器防止溢出 */
-            .qr-code-container {
-                overflow: hidden;
-                border-radius: 10px; /* 匹配圆角 */
-                margin: 15px 0; /* 增加间距 */
-            }
-        </style>
     </div>
 
     <script charset="UTF-8" id="LA_COLLECT" src="http://sdk.51.la/js-sdk-pro.min.js?id=KkoUA7W2OeOXmydP&ck=KkoUA7W2OeOXmydP"></script>
+    
+    <!-- 新增的轮播图脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let slideIndex = 0;
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const prevButton = document.querySelector('.carousel-prev');
+            const nextButton = document.querySelector('.carousel-next');
+            
+            function initCarousel() {
+                showSlide(slideIndex);
+                
+                setInterval(function() {
+                    slideIndex++;
+                    showSlide(slideIndex);
+                }, 5000);
+                
+                prevButton.addEventListener('click', function() {
+                    slideIndex--;
+                    showSlide(slideIndex);
+                });
+                
+                nextButton.addEventListener('click', function() {
+                    slideIndex++;
+                    showSlide(slideIndex);
+                });
+                
+                dots.forEach(function(dot, index) {
+                    dot.addEventListener('click', function() {
+                        slideIndex = index;
+                        showSlide(slideIndex);
+                    });
+                });
+            }
+            
+            function showSlide(index) {
+                if (index >= slides.length) {
+                    slideIndex = 0;
+                } else if (index < 0) {
+                    slideIndex = slides.length - 1;
+                } else {
+                    slideIndex = index;
+                }
+                
+                slides.forEach(function(slide) {
+                    slide.classList.remove('active');
+                });
+                
+                dots.forEach(function(dot) {
+                    dot.classList.remove('active');
+                });
+                
+                slides[slideIndex].classList.add('active');
+                dots[slideIndex].classList.add('active');
+            }
+            
+            initCarousel();
+        });
+    </script>
 </body>
 </html>
