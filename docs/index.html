@@ -1,675 +1,107 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>资源链接分享</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+```html
+<html lang="en"><script src="chrome-extension://kldhhobmmejaeaiilomaibhjlcfpceac/pagejsBaidu/pagejsBaidu.js"></script><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>启仔地址发布页</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            background: #f5f6f8;
         }
 
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        header h1 {
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .search-container {
-            display: flex;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-        }
-
-        .search-btn {
-            padding: 10px 15px;
-            background: #3498db;
-            color: white;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-        }
-
-        .carousel-container {
-            position: relative;
-            max-width: 1000px;
-            margin: 20px auto;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .carousel-slide {
-            display: none;
-            width: 100%;
-        }
-
-        .carousel-slide.active {
-            display: block;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: auto;
-            display: block;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .carousel-slide img:hover {
-            transform: scale(1.02);
-        }
-
-        .carousel-caption {
-            position: absolute;
-            bottom: 15px;
-            left: 0;
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            text-align: center;
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        .carousel-prev, .carousel-next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: auto;
-            padding: 16px;
-            color: white;
+        .h1 {
             font-weight: bold;
-            font-size: 18px;
-            background-color: rgba(0, 0, 0, 0.3);
-            border: none;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-            transition: 0.3s ease;
-        }
-
-        .carousel-next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        .carousel-prev:hover, .carousel-next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .carousel-dots {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .carousel-dot {
-            cursor: pointer;
-            height: 12px;
-            width: 12px;
-            margin: 0 5px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-        }
-
-        .carousel-dot.active, .carousel-dot:hover {
-            background-color: #717171;
-        }
-
-        .resource-list {
-            background: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-
-        .category {
-            margin-bottom: 15px;
-        }
-
-        .category-title {
-            cursor: pointer;
-            background-color: #3498db;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 18px;
-            transition: background-color 0.3s;
-        }
-
-        .category-title:hover {
-            background-color: #2980b9;
-        }
-
-        .subcategory-container {
-            display: none;
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-
-        .subcategory {
-            margin-bottom: 10px;
-        }
-
-        .subcategory-title {
-            cursor: pointer;
-            background-color: #ecf0f1;
-            color: #2c3e50;
-            padding: 8px 12px;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-        .subcategory-title:hover {
-            background-color: #d5d8dc;
-        }
-
-        .resource-container {
-            display: none;
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-
-        .resource-item {
-            padding: 8px 12px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: center;
-        }
-
-        .resource-item:last-child {
-            border-bottom: none;
-        }
-
-        .resource-index {
-            margin-right: 10px;
-            min-width: 20px;
-            color: #7f8c8d;
-        }
-
-        .resource-link {
-            color: #3498db;
-            text-decoration: none;
-            flex: 1;
-            cursor: pointer;
-        }
-
-        .resource-link:hover {
-            text-decoration: underline;
-        }
-
-        .icon {
-            transition: transform 0.3s;
-        }
-
-        .rotate {
-            transform: rotate(180deg);
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #7f8c8d;
-        }
-
-        .qrcode-section {
-            margin: 20px 0;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 8px;
-        }
-
-        .qrcode-section img {
-            width: 200px;
-            height: auto;
-            margin: 10px 0;
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 15px;
-            }
-            
-            .search-input, .search-btn {
-                padding: 8px;
-            }
-            
-            .category-title, .subcategory-title {
-                font-size: 16px;
-                padding: 8px 10px;
-            }
-            
-            .carousel-caption {
-                font-size: 14px;
-                padding: 8px;
-            }
-            
-            .carousel-prev, .carousel-next {
-                padding: 12px;
-                font-size: 16px;
-            }
-            
-            .carousel-dot {
-                height: 10px;
-                width: 10px;
-                margin: 0 4px;
-            }
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <h1>资源链接分享</h1>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="搜索资源..." class="search-input">
-            <button type="button" id="searchBtn" class="search-btn"><i class="fa-solid fa-search"></i></button>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4 h1">启仔地址发布页</h1>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-3 gy-3">
+                <div class="card shadow">
+                    <a href="https://www.kdocs.cn/l/crn8TrfU9bHv">
+                        <img src="img/gzhrjtj.jpg" class="card-img-top" alt="点击前往公众号日常推荐软件列表页面">
+                    </a>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">公众号软件推荐</h5> -->
+                        <p class="card-text">公众号日常推荐</p>
+                        <div class="text-center">
+                            <a href="https://www.kdocs.cn/l/crn8TrfU9bHv" class="btn btn-primary">点击前往</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 gy-3">
+                <div class="card shadow">
+                    <a href="https://mp.weixin.qq.com/s/pjhRbQFnV0mAMxXJyqXtNw">
+                        <img src="img/rjml.jpg" class="card-img-top" alt="点击前往软件目录页面">
+                    </a>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">软件目录</h5> -->
+                        <p class="card-text">聚合热门软件，长期更新！</p>
+                        <div class="text-center">
+                            <a href="https://mp.weixin.qq.com/s/pjhRbQFnV0mAMxXJyqXtNw" class="btn btn-primary">点击前往</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </header>
-
-    <div class="carousel-container">
-        <div class="carousel-slide">
-            <a href="https://172.lot-ml.com/ProductEn/Index/9bda7d18eb4ce972" target="_blank">
-                <img src="https://172.lot-ml.com/images/center_banner3.jpg" alt="爆款靓号">
-                <div class="carousel-caption">爆款靓号</div>
-            </a>
+<!-- 
+        <div class="row justify-content-center mt-4" style="display: none;">
+            <div class="col-md-2 gy-2">
+                <div class="card shadow fixed-width-card">
+                    <img src="img/qrcode.jpg" class="card-img-top" alt="扫码关注公众号">
+                    <div class="card-body">
+                        <p class="card-text">扫码关注<br>陆小启公众号</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 gy-2">
+                <div class="card shadow fixed-width-card">
+                    <img src="img/qrcode.jpg" class="card-img-top" alt="扫码关注公众号">
+                    <div class="card-body">
+                        <p class="card-text">扫码关注<br>陆小启公众号</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 gy-2">
+                <div class="card shadow fixed-width-card">
+                    <img src="img/qrcode.jpg" class="card-img-top" alt="扫码关注公众号">
+                    <div class="card-body">
+                        <p class="card-text">扫码关注<br>陆小启公众号</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="carousel-slide">
-            <a href="https://172.lot-ml.com/ProductEn/TyIndex/9bda7d18eb4ce972" target="_blank">
-                <img src="https://172.lot-ml.com/images/center_banner1.jpg" alt="各省内超大流量卡">
-                <div class="carousel-caption">各省内超大流量卡</div>
-            </a>
+        -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <h2>
+                    <div class="badge bg-success" style="width: 100%; font-weight: normal;">请 Ctrl+D 收藏本页到浏览器收藏夹</div>
+                </h2>
+            </div>
         </div>
-        
-        <div class="carousel-slide">
-            <a href="https://172.lot-ml.com/ProductEn/KdIndex/9bda7d18eb4ce972" target="_blank">
-                <img src="https://bu.dusays.com/2025/03/14/67d3c1e9ad8de.png" alt="超值宽带">
-                <div class="carousel-caption">超值宽带</div>
-            </a>
-        </div>
-        
-        <button class="carousel-prev">&#10094;</button>
-        <button class="carousel-next">&#10095;</button>
-        
-        <div class="carousel-dots">
-            <span class="carousel-dot"></span>
-            <span class="carousel-dot"></span>
-            <span class="carousel-dot"></span>
-        </div>
-    </div>
-
-    <main>
-        <div id="resourceList" class="resource-list"></div>
-    </main>
-
-    <footer>
-        <div class="qrcode-section">
-            <p>获取更多资源请关注公众号「陆小启」</p>
-            <p>回复「获取资源」获得更多资源</p>
-            <img src="img/qrcode.jpg" alt="公众号二维码">
-        </div>
-        
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+                <hr style="opacity: 0.1;">
+                <p>获取更多资源请关注公众号「陆小启」</p>
+                <p>回复「获取资源」获得更多资源</p>
+                <img src="img/qrcode.jpg" alt="公众号二维码">
+                <hr style="opacity: 0.1;">
         <p style="margin-top: 2rem; color: #666;">
             &copy; <a href="https://blog.luxq.space/" 
                  style="color: inherit; text-decoration: none;" 
                  onmouseover="this.style.textDecoration='underline'" 
                  onmouseout="this.style.textDecoration='none'">陆小启Qkairo所有</a>
         </p>
-    </footer>
+            </div>
+        </div>
+    </div>
 
-    <script>
-const resourceData = [
-    {
-        category: "学习资源",
-        subcategories: [
-            {
-                name: "学习资料",
-                resources: [
-                    { id: 1, name: "四六级", url: "https://pan.baidu.com/s/1-D_LT1ox8v2MOWfVqe8dxw?pwd=j4p9" },
-                    { id: 2, name: "大学生职业生涯规划", url: "https://pan.baidu.com/s/14jiIxrJjeyHjDYLnbCW6Nw?pwd=j4p9" },
-                    { id: 3, name: "英语词汇等", url: "https://pan.baidu.com/s/1EWYVO5Yd0m9bFVm8QRlYPg?pwd=j4p9" },
-                    { id: 4, name: "大学数学类", url: "https://pan.baidu.com/s/1Z8Qh6kNZnhHxZYrZ21_OBg?pwd=j4p9" },
-                    { id: 5, name: "BBC牛津树真人版Biff and Chip(全2季)", url: "https://pan.baidu.com/s/1TqW9wxf7ggbsUzk969qHSg?pwd=j4p9" }
-                ]
-            },
-            {
-                name: "考研资料",
-                resources: [
-                    { id: 1, name: "考研资源（政治、数学、英语）", url: "https://pan.baidu.com/s/1mLFSPObx-wkxYDZ5coohMg?pwd=hikg" },
-                    { id: 2, name: "2024肖秀荣考研政治系列", url: "https://pan.quark.cn/s/983d9dc6bfc3" }
-                ]
-            },
-            {
-                name: "考证资料",
-                resources: [
-                    { id: 1, name: "计算机等级考试", url: "https://pan.baidu.com/s/1xYI9xIaBARejL3AwWj7b5g?pwd=b297" },
-                    { id: 2, name: "MBA", url: "https://pan.baidu.com/s/12lwA_e6i4eeiiYyJeZCJMQ?pwd=b297" },
-                    { id: 3, name: "英语四级", url: "https://pan.quark.cn/s/64dcf82c0f9d" },
-                    { id: 4, name: "普通话学习资料", url: "https://pan.quark.cn/s/31048050ff28" }
-                ]
-            },
-            {
-                name: "技能提升",
-                resources: [
-                    { id: 1, name: "office教程入门到精通", url: "https://pan.baidu.com/s/1xBYuW636zGLmjt98Fv85_g?pwd=96u8" }
-                ]
-            }
-        ]
-    },
-    {
-        category: "软件资源",
-        subcategories: [
-            {
-                name: "手机软件",
-                resources: [
-                    { id: 1, name: "星空漫步2", url: "https://pan.baidu.com/s/1aEunxexTA4GoaYBXw5A-7g?pwd=jm9k" },
-                    { id: 2, name: "布丁扫描", url: "https://pan.quark.cn/s/ed080f8bfebb" },
-                    { id: 3, name: "动漫APP", url: "https://pan.quark.cn/s/ab8571cce16f" },
-                    { id: 4, name: "菜谱APP", url: "https://pan.quark.cn/s/a0ad64468d83" }
-                ]
-            },
-            {
-                name: "电脑软件",
-                resources: [
-                    { id: 1, name: "短视频去水印", url: "https://pan.baidu.com/s/1WZnSoYHZ7uYAeyyAji8_fA?pwd=eb5g" },
-                    { id: 2, name: "WPS安装包", url: "https://pan.baidu.com/s/17xhkjtyurlClisqRkK0TKw?pwd=eb5g" },
-                    { id: 3, name: "Diskgenius", url: "https://pan.baidu.com/s/1-8yB4vh8EQH4nAEd6IiTCQ?pwd=eb5g" },
-                    { id: 4, name: "Markdown软件以及教程", url: "https://pan.baidu.com/s/1t3JHt3VrT5HJ8psbVkDeZw?pwd=eb5g" },
-                    { id: 5, name: "幂宝思维", url: "https://pan.baidu.com/s/1LcDhZpVpQ9BM-99wkfVMsw?pwd=eb5g" },
-                    { id: 6, name: "DreamScene2", url: "https://pan.baidu.com/s/1mimCI8LjowJ2eyKhxJAS6g?pwd=eb5g" },
-                    { id: 7, name: "犀牛Rhino", url: "https://pan.baidu.com/s/1-EDSeEju2WJH9uWkpU6kQg?pwd=eb5g" },
-                    { id: 8, name: "Adobe软件大全", url: "https://pan.baidu.com/s/1DDkWWyWFM4hVofGa66LgcA?pwd=eb5g" },
-                    { id: 9, name: "TTS-Vue", url: "https://pan.baidu.com/s/1ct06EGd3qHFiKwmUQLLmSQ?pwd=eb5g" },
-                    { id: 10, name: "达芬奇", url: "https://pan.baidu.com/s/10qAN8CzikyZZ_-92XanYUA?pwd=eb5g" },
-                    { id: 11, name: "UnProtector", url: "https://pan.baidu.com/s/1K4hjuuYvb4ak2Sdw0PR8JQ?pwd=eb5g" },
-                    { id: 12, name: "腾讯交互翻译", url: "https://pan.baidu.com/s/1Zw304wc6I4Cli6xS3s4mlQ?pwd=eb5g" },
-                    { id: 13, name: "原本专业级图去灰底与增强软件", url: "https://pan.baidu.com/s/1aqXt3ANjD4PenbNtH_z0rA?pwd=eb5g" },
-                    { id: 14, name: "人工桌面", url: "https://pan.baidu.com/s/15ePDQ_uSRfd6u_qt9ruDrQ?pwd=eb5g" },
-                    { id: 15, name: "云豹录屏大师", url: "https://pan.baidu.com/s/1eE96r4BhPO3XfzoGKCL4zg?pwd=eb5g" },
-                    { id: 16, name: "AI人工智能人声伴奏分离软件", url: "https://pan.baidu.com/s/1cU04MSxOsm51MY3cYKiz5Q?pwd=eb5g" },
-                    { id: 17, name: "硬件狗狗单文件版", url: "https://pan.baidu.com/s/1V5puhUgh-COG5jdgHu60ZA?pwd=eb5g" },
-                    { id: 18, name: "WinRAR", url: "https://pan.baidu.com/s/1JYDRPbmpNz66hpwDTdsv1A?pwd=eb5g" },
-                    { id: 19, name: "Yoco_0.1.1.alpha_x86", url: "https://pan.baidu.com/s/1B-UPgS3r6viGqpQPUXBsvg?pwd=eb5g" },
-                    { id: 20, name: "OUninstall", url: "https://pan.baidu.com/s/1jsusu7ujtNA4tNiKihP1YA?pwd=eb5g" },
-                    { id: 21, name: "office卸载工具", url: "https://pan.baidu.com/s/1GiL4f51A27URBRkzWjSeug?pwd=eb5g" },
-                    { id: 22, name: "7z", url: "https://pan.baidu.com/s/1tlL1JPRNhNv-wJWDTfeRAg?pwd=eb5g" },
-                    { id: 23, name: "Office2024正式版", url: "https://pan.baidu.com/s/11TS3qX4NpKWxfpImLkNarg?pwd=eb5g" },
-                    { id: 24, name: "DevCpp", url: "https://pan.baidu.com/s/17pOUebMPEpBcR1XN0667bQ?pwd=eb5g" },
-                    { id: 25, name: "SAI 2.0", url: "https://pan.baidu.com/s/1ualu2km6ZSy0RMh7eJS3KA?pwd=eb5g" },
-                    { id: 26, name: "GithubDesktop汉化工具", url: "https://pan.baidu.com/s/10SyZEian14z4dvOoX3mLig?pwd=eb5g" },
-                    { id: 27, name: "彩虹工具箱", url: "https://pan.baidu.com/s/12Goq_cjbwWRsdort6IHCEA?pwd=eb5g" },
-                    { id: 28, name: "wkDownloader1.4.0", url: "https://pan.baidu.com/s/1tPwIzNE8RvzLDXk2enHlsg?pwd=eb5g" },
-                    { id: 29, name: "多引擎实时在线翻译", url: "https://pan.baidu.com/s/1Skmq32ndWRyi3CgmsIXHRA?pwd=eb5g" }
-                ]
-            }
-        ]
-    },
-    {
-        category: "素材资源",
-        subcategories: [
-            {
-                name: "影视素材特效插件等",
-                resources: [
-                    { id: 1, name: "影视素材资源", url: "https://pan.baidu.com/s/11bXfvMHsnAQdpxIcIzNGaQ?pwd=k2jq" },
-                    { id: 2, name: "特效素材", url: "https://pan.baidu.com/s/1UVq89RBpEHFVwgmRLt_92w?pwd=k2jq" }
-                ]
-            },
-            {
-                name: "设计素材",
-                resources: [
-                    { id: 1, name: "1000+Word模板大全", url: "https://pan.baidu.com/s/1KFo5_mMEsgEzqvlOrHGvxA?pwd=1t8t" },
-                    { id: 2, name: "100个Ps笔刷", url: "https://pan.baidu.com/s/1AQo8u1x-9m1X3AsQMN-zLg?pwd=1t8t" }
-                ]
-            },
-            {
-                name: "字体",
-                resources: [
-                    { id: 1, name: "字体资源", url: "https://pan.baidu.com/s/1MFbT9nE2pR0jkaGaDkHQ3w?pwd=gb5i" }
-                ]
-            },
-            {
-                name: "摄影",
-                resources: [
-                    { id: 1, name: "摄影素材", url: "https://pan.baidu.com/s/1MFbT9nE2pR0jkaGaDkHQ3w?pwd=gb5i" }
-                ]
-            },
-            {
-                name: "剪辑素材",
-                resources: [
-                    { id: 1, name: "剪辑素材合集", url: "https://pan.baidu.com/s/1p6qU4r9J7KCBUUfaJLaaoA?pwd=pjtm" }
-                ]
-            },
-            {
-                name: "动漫素材",
-                resources: [
-                    { id: 1, name: "动漫素材合集", url: "https://pan.quark.cn/s/a178f75757a4" }
-                ]
-            }
-        ]
-    },
-    {
-        category: "日常类",
-        subcategories: [
-            {
-                name: "健身运动课",
-                resources: [
-                    { id: 1, name: "Keep运动健身", url: "https://pan.quark.cn/s/70a9e47e6136" }
-                ]
-            },
-            {
-                name: "日常类其他",
-                resources: [
-                    { id: 1, name: "华为手机摄影高级班", url: "https://pan.baidu.com/s/1e6Nj2Ur16GQd1U2eFS9HZA?pwd=hbzi" },
-                    { id: 2, name: "手机自拍教程", url: "https://pan.baidu.com/s/1r9wVlBo3_OXeTr7wsPQeyg?pwd=hbzi" },
-                    { id: 3, name: "零基础学会拍视频", url: "https://pan.baidu.com/s/1IlfoPA2fTGjm6jpw6Q5PpA?pwd=hbzi" },
-                    { id: 4, name: "145道家常菜视频教程", url: "https://pan.baidu.com/s/10O80xvfMEEDpgH1qppmH4Q?pwd=hbzi" },
-                    { id: 5, name: "唱歌教程", url: "https://pan.baidu.com/s/1PO7rT8z1q9bnoCRv9ApNjA?pwd=hbzi" },
-                    { id: 6, name: "美妆秘籍", url: "https://pan.baidu.com/s/1koMERJqR0J8mnznXZQUMJw?pwd=hbzi" },
-                    { id: 7, name: "每周两小时健身", url: "https://pan.baidu.com/s/1kbxCTmyuq8lI_s-JmG1wQw?pwd=hbzi" },
-                    { id: 8, name: "瑜伽零基础", url: "https://pan.baidu.com/s/1mlCdCQzGrfKNu4rOlQBmnA?pwd=hbzi" }
-                ]
-            },
-            {
-                name: "音乐",
-                resources: [
-                    { id: 1, name: "无损音乐合集（131GB）", url: "https://pan.quark.cn/s/48433dc35a73" },
-                    { id: 2, name: "DTS无损音乐700张", url: "https://pan.quark.cn/s/513cb783e2d3" },
-                    { id: 3, name: "DTS无损音乐400张", url: "https://pan.quark.cn/s/b30f3e6f04b4" },
-                    { id: 4, name: "DTS无损音乐300张", url: "https://pan.quark.cn/s/1c34381f2328" }
-                ]
-            },
-            {
-                name: "影视",
-                resources: [
-                    { id: 1, name: "宫崎骏电影合集", url: "https://pan.quark.cn/s/a244a3b5ae4" }
-                ]
-            }
-        ]
-    },
-    {
-        category: "自媒体类",
-        subcategories: [
-            {
-                name: "自媒体入门资料包",
-                resources: [
-                    { id: 1, name: "自媒体入门资料包", url: "https://pan.baidu.com/s/1V9UpAAHYbtyYtEshJJyTbQ?pwd=e378" }
-                ]
-            }
-        ]
-    },
-    {
-        category: "其他",
-        subcategories: [
-            {
-                name: "其他",
-                resources: [
-                    { id: 1, name: "田字格纸，四线格纸", url: "https://pan.baidu.com/s/13bZwYE53xn-yP6lOVMrrHQ?pwd=s98r" },
-                    { id: 2, name: "微信状态动图", url: "https://pan.baidu.com/s/1jrhCU_t3p1ToOszaugfsiw?pwd=s98r" }
-                ]
-            }
-        ]
-    }
-];
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // 轮播图初始化代码
-            let slideIndex = 0;
-            const slides = document.querySelectorAll('.carousel-slide');
-            const dots = document.querySelectorAll('.carousel-dot');
-            const prevButton = document.querySelector('.carousel-prev');
-            const nextButton = document.querySelector('.carousel-next');
-            
-            function initCarousel() {
-                showSlide(slideIndex);
-                setInterval(() => {
-                    slideIndex++;
-                    showSlide(slideIndex);
-                }, 5000);
-                
-                prevButton.addEventListener('click', () => {
-                    slideIndex--;
-                    showSlide(slideIndex);
-                });
-                
-                nextButton.addEventListener('click', () => {
-                    slideIndex++;
-                    showSlide(slideIndex);
-                });
-                
-                dots.forEach((dot, index) => {
-                    dot.addEventListener('click', () => {
-                        slideIndex = index;
-                        showSlide(slideIndex);
-                    });
-                });
-            }
-
-            function showSlide(index) {
-                if (index >= slides.length) slideIndex = 0;
-                else if (index < 0) slideIndex = slides.length - 1;
-                else slideIndex = index;
-
-                slides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-
-                slides[slideIndex].classList.add('active');
-                dots[slideIndex].classList.add('active');
-            }
-
-            // 资源列表功能
-            const resourceListElement = document.getElementById('resourceList');
-            const searchInput = document.getElementById('searchInput');
-            const searchBtn = document.getElementById('searchBtn');
-
-            function renderResourceList(data) {
-                resourceListElement.innerHTML = '';
-                data.forEach(categoryItem => {
-                    const categoryDiv = document.createElement('div');
-                    categoryDiv.className = 'category';
-                    categoryDiv.innerHTML = `
-                        <div class="category-title">
-                            ${categoryItem.category}
-                            <span class="icon">▼</span>
-                        </div>
-                        <div class="subcategory-container">
-                            ${categoryItem.subcategories.map(subcategory => `
-                                <div class="subcategory">
-                                    <div class="subcategory-title">
-                                        ${subcategory.name}
-                                        <span class="icon">▼</span>
-                                    </div>
-                                    <div class="resource-container">
-                                        ${subcategory.resources.map(resource => `
-                                            <div class="resource-item">
-                                                <span class="resource-index">①</span>
-                                                <a href="${resource.url}" target="_blank" class="resource-link">${resource.name}</a>
-                                            </div>
-                                        `).join('')}
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                    resourceListElement.appendChild(categoryDiv);
-                });
-
-                document.querySelectorAll('.category-title, .subcategory-title').forEach(title => {
-                    title.addEventListener('click', function() {
-                        const container = this.parentElement.querySelector('.subcategory-container, .resource-container');
-                        const icon = this.querySelector('.icon');
-                        container.style.display = container.style.display === 'none' ? 'block' : 'none';
-                        icon.classList.toggle('rotate');
-                    });
-                });
-            }
-
-            // 搜索功能
-            function searchResources() {
-                const searchTerm = searchInput.value.trim().toLowerCase();
-                if (!searchTerm) {
-                    renderResourceList(resourceData);
-                    return;
-                }
-
-                const filteredData = resourceData.map(category => ({
-                    ...category,
-                    subcategories: category.subcategories.filter(sub => 
-                        sub.resources.some(res => res.name.toLowerCase().includes(searchTerm))
-                    )
-                })).filter(category => category.subcategories.length > 0);
-
-                renderResourceList(filteredData);
-            }
-
-            // 初始化
-            initCarousel();
-            renderResourceList(resourceData);
-            searchBtn.addEventListener('click', searchResources);
-            searchInput.addEventListener('keyup', e => e.key === 'Enter' && searchResources());
-        });
-    </script>
+    <script charset="UTF-8" id="LA_COLLECT" src="http://sdk.51.la/js-sdk-pro.min.js?id=KkoUA7W2OeOXmydP&ck=KkoUA7W2OeOXmydP"></script>
 </body>
 </html>
