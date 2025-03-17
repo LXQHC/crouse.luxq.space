@@ -361,200 +361,198 @@
     </footer>
 
     <script>
-        const resourceData = [
+const resourceData = [
+    {
+        category: "学习资源",
+        subcategories: [
             {
-                category: "学习资源",
-                subcategories: [
-                    {
-                        name: "考证资源",
-                        resources: [
-                            { id: 1, name: "普通话学习资料", url: "https://pan.quark.cn/s/31048050ff28" },
-                            { id: 2, name: "英语四级历年真题答案", url: "https://pan.quark.cn/s/64dcf82c0f9d" },
-                            { id: 3, name: "2024肖秀荣考研政治系列", url: "https://pan.quark.cn/s/983d9dc6bfc3" },
-                            { id: 4, name: "四六级", url: "https://pan.baidu.com/s/1pC6C1a9iBWPv5k63sVWNGA?pwd=jd4d" }
-                        ]
-                    },
-                    {
-                        name: "学习资料",
-                        resources: [
-                            { id: 1, name: "学习资料", url: "https://pan.baidu.com/s/1LBV-PIU0rBw9WGpgW3od3g?pwd=z5dc" },
-                            { id: 2, name: "英语词汇等", url: "https://pan.baidu.com/s/1LBV-PIU0rBw9WGpgW3od3g?pwd=z5dc" },
-                            { id: 3, name: "BBC牛津树真人版Biff and Chip(全2季)", url: "https://pan.baidu.com/s/1TYnD_raSyvabo82_oco5AA?pwd=26n5" }
-                        ]
-                    },
-                    {
-                        name: "大学课程",
-                        resources: [
-                            { id: 1, name: "大学生职业生涯规划", url: "https://pan.baidu.com/s/1TQZQNYMEKFjBet3D7MUhmg?pwd=djx6" },
-                            { id: 2, name: "大学数学类", url: "https://pan.baidu.com/s/1jpJlEYWuP6wnRxWE-5TYHQ?pwd=x4vf" }
-                        ]
-                    },
-                    {
-                        name: "技能提升",
-                        resources: [
-                            { id: 1, name: "office教程入门到精通", url: "https://pan.baidu.com/s/118VunzgiDz0sS1mk9dyb3w?pwd=dbu7" }
-                        ]
-                    }
+                name: "学习资料",
+                resources: [
+                    { id: 1, name: "四六级", url: "https://pan.baidu.com/s/1-D_LT1ox8v2MOWfVqe8dxw?pwd=j4p9" },
+                    { id: 2, name: "大学生职业生涯规划", url: "https://pan.baidu.com/s/14jiIxrJjeyHjDYLnbCW6Nw?pwd=j4p9" },
+                    { id: 3, name: "英语词汇等", url: "https://pan.baidu.com/s/1EWYVO5Yd0m9bFVm8QRlYPg?pwd=j4p9" },
+                    { id: 4, name: "大学数学类", url: "https://pan.baidu.com/s/1Z8Qh6kNZnhHxZYrZ21_OBg?pwd=j4p9" },
+                    { id: 5, name: "BBC牛津树真人版Biff and Chip(全2季)", url: "https://pan.baidu.com/s/1TqW9wxf7ggbsUzk969qHSg?pwd=j4p9" }
                 ]
             },
             {
-                category: "软件资源",
-                subcategories: [
-                    {
-                        name: "电脑软件",
-                        resources: [
-                            { id: 1, name: "WPS各版本", url: "https://pan.quark.cn/s/4f7dc1e04976" },
-                            { id: 2, name: "Zlibrary免费电子书籍器", url: "https://pan.quark.cn/s/1e4e287652f6" },
-                            { id: 3, name: "Bypass火车分流抢票神器", url: "https://pan.quark.cn/s/0c06a769b96f" },
-                            { id: 4, name: "Pixpin截图工具", url: "https://pan.quark.cn/s/63b9abe9e290" },
-                            { id: 5, name: "20241210-火车票抢票神器Bypass", url: "https://pan.quark.cn/s/d2d7c01fb7d3" },
-                            { id: 6, name: "20241203-picpick截图软件", url: "https://pan.quark.cn/s/ab994a65bc53" },
-                            { id: 7, name: "IDM超强下载器", url: "https://pan.quark.cn/s/e74715947256" },
-                            { id: 8, name: "微软语音合成助手5.2", url: "https://pan.quark.cn/s/ff10cc2b31c0" },
-                            { id: 9, name: "微软Office类", url: "https://pan.quark.cn/s/117ad07a7eb5" },
-                            { id: 10, name: "vx公众号文章下载器", url: "https://pan.quark.cn/s/e4ce0b41f07c" },
-                            { id: 11, name: "班迪录屏免安装", url: "https://pan.quark.cn/s/731fc106c9d5" },
-                            { id: 12, name: "万兴全能格式", url: "https://pan.quark.cn/s/704782a8fe40" },
-                            { id: 13, name: "300桌宠", url: "https://pan.quark.cn/s/588b4ce801a2" },
-                            { id: 14, name: "腾讯交互翻译", url: "https://pan.baidu.com/s/1Ll2fGxtKkwZuN0Dw9cEWAA?pwd=54zg" },
-                            { id: 15, name: "Markdown软件以及教程", url: "https://pan.baidu.com/s/1lMnm2jzXzuL6fmQMmgR-KA?pwd=3bye" },
-                            { id: 16, name: "UnProtector", url: "https://pan.baidu.com/s/1UEoV2LU__CWy8wj5T1B-8Q?pwd=stmv" },
-                            { id: 17, name: "office卸载工具", url: "https://pan.baidu.com/s/1p6-Go54IJWrp18VrrHHAQQ?pwd=tc99" },
-                            { id: 18, name: "彩虹工具箱", url: "https://pan.baidu.com/s/1qokcyd8zXnlHLQoOSmVRGQ?pwd=r7a6" },
-                            { id: 19, name: "TTS-Vue", url: "https://pan.baidu.com/s/1q1gxXHXiys4BB8_xv45Ccg?pwd=9455" },
-                            { id: 20, name: "wkDownloader1.4.0", url: "https://pan.baidu.com/s/1kl8dym8vxTlRR29i5B2_iw?pwd=ft6c" },
-                            { id: 21, name: "Adobe软件大全", url: "https://pan.baidu.com/s/1uDN8hbqZHV50eAIiFIiDZg?pwd=9v79" },
-                            { id: 22, name: "AI人工智能人声伴奏分离软件", url: "https://pan.baidu.com/s/1ONXglXbufL9coSDIzz_bQA?pwd=44du" },
-                            { id: 23, name: "犀牛Rhino（犀牛）", url: "https://pan.baidu.com/s/1shvIp4zk5vi3nZUH3XTdcg?pwd=wdfe" },
-                            { id: 24, name: "云豹录屏大师", url: "https://pan.baidu.com/s/12TpGIN1kBgXpLfw33OysYQ?pwd=bfef" },
-                            { id: 25, name: "原本专业级图去灰底与增强软件 1.3 正式版", url: "https://pan.baidu.com/s/1887P60LwrXPMiixNraYPcg?pwd=q6a4" },
-                            { id: 26, name: "硬件狗狗单文件版v3.2.22.0923 HDDog", url: "https://pan.baidu.com/s/1Kx2Mm2HQgg982kul-fRUmg?pwd=jztq" },
-                            { id: 27, name: "WinRAR", url: "https://pan.baidu.com/s/1wc3fUVyQiZJ8FmYiwOuIFw?pwd=wqic" },
-                            { id: 28, name: "软件DreamScene2", url: "https://pan.baidu.com/s/170_8m4UMo7UQ4S75V1Tk4g?pwd=t6th" },
-                            { id: 29, name: "多引擎实时在线翻译(QTranslate)6.9.0单文件便携优化版", url: "https://pan.baidu.com/s/1II03fjUMPYNubR-7meyK9g?pwd=4nbb" },
-                            { id: 30, name: "达芬奇", url: "https://pan.baidu.com/s/1HZKpGegW5IOpkKnUi9c10Q?pwd=883j" },
-                            { id: 31, name: "Diskgenius", url: "https://pan.baidu.com/s/1Hd3BT9bMhEmPq0YU1IeD0A?pwd=kpqk" },
-                            { id: 32, name: "WPS安装包多版本", url: "https://pan.baidu.com/s/1lyYbMELQn2ChYSwtNkmEcQ?pwd=ucg8" },
-                            { id: 33, name: "SAI 2.0", url: "https://pan.baidu.com/s/1fCaqFp24sqfYd4YTdRewRg?pwd=gxfg" },
-                            { id: 34, name: "幂宝思维", url: "https://pan.baidu.com/s/1vwvYG17SyalK6eXTbcQ4Wg?pwd=qx5y" },
-                            { id: 35, name: "20240911-Office2024正式版", url: "https://pan.baidu.com/s/1lYH5esMpH4NEL0ZRvtHHiw?pwd=8t6n" },
-                            { id: 36, name: "OUninstall", url: "https://pan.baidu.com/s/1bF8iUnpM73Sex9aqop0vfA?pwd=jejx" },
-                            { id: 37, name: "短视频去水印 桌面版 Setup 1.0.0", url: "https://pan.baidu.com/s/1y5i6C4qDeDhSRK8KH-l5og?pwd=ard2" },
-                            { id: 38, name: "7z", url: "https://pan.baidu.com/s/1mh3O65U8f8DgceW8I94DdA?pwd=v9uq" },
-                            { id: 39, name: "人工桌面", url: "https://pan.baidu.com/s/1UYuvMlpcDeH_EEaBaFkWAA?pwd=9tm5" },
-                            { id: 40, name: "Yoco_0.1.1.alpha_x86_单文件", url: "https://pan.baidu.com/s/1lX181aIGZVzLN4CBpsXv_A?pwd=2yeg" },
-                            { id: 41, name: "C语言轻量级编译调试工具_DevCpp", url: "https://pan.baidu.com/s/15qQCr1ZZ253N_iJuOcwZMA?pwd=k73y" },
-                            { id: 42, name: "GithubDesktop汉化工具", url: "https://pan.baidu.com/s/1MsX0CPa-u91Ig5vCbgvndQ?pwd=8bg5" }
-                        ]
-                    },
-                    {
-                        name: "手机软件",
-                        resources: [
-                            { id: 1, name: "布丁扫描破姐板", url: "https://pan.quark.cn/s/ed080f8bfebb" },
-                            { id: 2, name: "动漫APP", url: "https://pan.quark.cn/s/ab8571cce16f" },
-                            { id: 3, name: "菜谱APP", url: "https://pan.quark.cn/s/a0ad64468d83" },
-                            { id: 4, name: "星空漫步2", url: "https://pan.baidu.com/s/1IIhM0pCp6VzdOeedij0Dgg?pwd=tp7g" }
-                        ]
-                    }
+                name: "考研资料",
+                resources: [
+                    { id: 1, name: "考研资源（政治、数学、英语）", url: "https://pan.baidu.com/s/1mLFSPObx-wkxYDZ5coohMg?pwd=hikg" },
+                    { id: 2, name: "2024肖秀荣考研政治系列", url: "https://pan.quark.cn/s/983d9dc6bfc3" }
                 ]
             },
             {
-                category: "日常类",
-                subcategories: [
-                    {
-                        name: "健身运动课",
-                        resources: [
-                            { id: 1, name: "Keep运动健身", url: "https://pan.quark.cn/s/70a9e47e6136" }
-                        ]
-                    },
-                    {
-                        name: "音乐",
-                        resources: [
-                            { id: 1, name: "【无损音乐合集】第一弹131GB", url: "https://pan.quark.cn/s/48433dc35a73" },
-                            { id: 2, name: "【DTS无损音乐700张】01", url: "https://pan.quark.cn/s/513cb783e2d3" },
-                            { id: 3, name: "【DTS无损音乐400张】03", url: "https://pan.quark.cn/s/b30f3e6f04b4" },
-                            { id: 4, name: "【DTS无损音乐300张】02", url: "https://pan.quark.cn/s/1c34381f2328" }
-                        ]
-                    },
-                    {
-                        name: "影视",
-                        resources: [
-                            { id: 1, name: "宫崎骏电影合集", url: "https://pan.quark.cn/s/a244a3b5ae4" }
-                        ]
-                    },
-                    {
-                        name: "其他",
-                        resources: [
-                            { id: 1, name: "其他资源", url: "https://pan.baidu.com/s/1zqkUxMsgBW3lbAyHvR6enQ?pwd=35b4" }
-                        ]
-                    }
+                name: "考证资料",
+                resources: [
+                    { id: 1, name: "计算机等级考试", url: "https://pan.baidu.com/s/1xYI9xIaBARejL3AwWj7b5g?pwd=b297" },
+                    { id: 2, name: "MBA", url: "https://pan.baidu.com/s/12lwA_e6i4eeiiYyJeZCJMQ?pwd=b297" },
+                    { id: 3, name: "英语四级", url: "https://pan.quark.cn/s/64dcf82c0f9d" },
+                    { id: 4, name: "普通话学习资料", url: "https://pan.quark.cn/s/31048050ff28" }
                 ]
             },
             {
-                category: "素材资源",
-                subcategories: [
-                    {
-                        name: "动漫素材",
-                        resources: [
-                            { id: 1, name: "动漫素材合集", url: "https://pan.quark.cn/s/a178f75757a4" }
-                        ]
-                    },
-                    {
-                        name: "剪辑素材",
-                        resources: [
-                            { id: 1, name: "剪辑素材", url: "https://pan.baidu.com/s/1720CnkHHn1O2xKvoRekqvg?pwd=edx2" }
-                        ]
-                    },
-                    {
-                        name: "影视素材特效插件",
-                        resources: [
-                            { id: 1, name: "影视素材特效插件", url: "https://pan.baidu.com/s/1DF4GhmzPiN1juvN05kEKLg?pwd=x8jy" }
-                        ]
-                    },
-                    {
-                        name: "设计素材",
-                        resources: [
-                            { id: 1, name: "设计素材", url: "https://pan.baidu.com/s/1IBuOb7bpr3gAj2yfMU-JQw?pwd=t3e1" }
-                        ]
-                    },
-                    {
-                        name: "摄影",
-                        resources: [
-                            { id: 1, name: "摄影素材", url: "https://pan.baidu.com/s/1KCwH1guHmNaPPPQpwYO73A?pwd=sjty" }
-                        ]
-                    },
-                    {
-                        name: "字体",
-                        resources: [
-                            { id: 1, name: "字体资源", url: "https://pan.baidu.com/s/1LLxBqgwfxGHXm4-0jRrblQ?pwd=8atw" }
-                        ]
-                    }
-                ]
-            },
-            {
-                category: "其他",
-                subcategories: [
-                    {
-                        name: "其他",
-                        resources: [
-                            { id: 1, name: "田字格纸，四线格纸", url: "https://pan.baidu.com/s/10VKDSAw6VQOZYTuCg9HOpw?pwd=i7qv" },
-                            { id: 2, name: "微信状态动图", url: "https://pan.baidu.com/s/1M_K-VnedK-SminZImJ1nww?pwd=jm8k" }
-                        ]
-                    }
-                ]
-            },
-            {
-                category: "自媒体类",
-                subcategories: [
-                   {
-                        name: "自媒体入门资料包",
-                        resources: [
-                            { id: 1, name: "自媒体入门资料包", url: "https://pan.baidu.com/s/1_BtOt6pPGkntbDTgtwy8QA?pwd=6ufn" }
-                        ]
-                    }
+                name: "技能提升",
+                resources: [
+                    { id: 1, name: "office教程入门到精通", url: "https://pan.baidu.com/s/1xBYuW636zGLmjt98Fv85_g?pwd=96u8" }
                 ]
             }
-        ];
+        ]
+    },
+    {
+        category: "软件资源",
+        subcategories: [
+            {
+                name: "手机软件",
+                resources: [
+                    { id: 1, name: "星空漫步2", url: "https://pan.baidu.com/s/1aEunxexTA4GoaYBXw5A-7g?pwd=jm9k" },
+                    { id: 2, name: "布丁扫描", url: "https://pan.quark.cn/s/ed080f8bfebb" },
+                    { id: 3, name: "动漫APP", url: "https://pan.quark.cn/s/ab8571cce16f" },
+                    { id: 4, name: "菜谱APP", url: "https://pan.quark.cn/s/a0ad64468d83" }
+                ]
+            },
+            {
+                name: "电脑软件",
+                resources: [
+                    { id: 1, name: "短视频去水印", url: "https://pan.baidu.com/s/1WZnSoYHZ7uYAeyyAji8_fA?pwd=eb5g" },
+                    { id: 2, name: "WPS安装包", url: "https://pan.baidu.com/s/17xhkjtyurlClisqRkK0TKw?pwd=eb5g" },
+                    { id: 3, name: "Diskgenius", url: "https://pan.baidu.com/s/1-8yB4vh8EQH4nAEd6IiTCQ?pwd=eb5g" },
+                    { id: 4, name: "Markdown软件以及教程", url: "https://pan.baidu.com/s/1t3JHt3VrT5HJ8psbVkDeZw?pwd=eb5g" },
+                    { id: 5, name: "幂宝思维", url: "https://pan.baidu.com/s/1LcDhZpVpQ9BM-99wkfVMsw?pwd=eb5g" },
+                    { id: 6, name: "DreamScene2", url: "https://pan.baidu.com/s/1mimCI8LjowJ2eyKhxJAS6g?pwd=eb5g" },
+                    { id: 7, name: "犀牛Rhino", url: "https://pan.baidu.com/s/1-EDSeEju2WJH9uWkpU6kQg?pwd=eb5g" },
+                    { id: 8, name: "Adobe软件大全", url: "https://pan.baidu.com/s/1DDkWWyWFM4hVofGa66LgcA?pwd=eb5g" },
+                    { id: 9, name: "TTS-Vue", url: "https://pan.baidu.com/s/1ct06EGd3qHFiKwmUQLLmSQ?pwd=eb5g" },
+                    { id: 10, name: "达芬奇", url: "https://pan.baidu.com/s/10qAN8CzikyZZ_-92XanYUA?pwd=eb5g" },
+                    { id: 11, name: "UnProtector", url: "https://pan.baidu.com/s/1K4hjuuYvb4ak2Sdw0PR8JQ?pwd=eb5g" },
+                    { id: 12, name: "腾讯交互翻译", url: "https://pan.baidu.com/s/1Zw304wc6I4Cli6xS3s4mlQ?pwd=eb5g" },
+                    { id: 13, name: "原本专业级图去灰底与增强软件", url: "https://pan.baidu.com/s/1aqXt3ANjD4PenbNtH_z0rA?pwd=eb5g" },
+                    { id: 14, name: "人工桌面", url: "https://pan.baidu.com/s/15ePDQ_uSRfd6u_qt9ruDrQ?pwd=eb5g" },
+                    { id: 15, name: "云豹录屏大师", url: "https://pan.baidu.com/s/1eE96r4BhPO3XfzoGKCL4zg?pwd=eb5g" },
+                    { id: 16, name: "AI人工智能人声伴奏分离软件", url: "https://pan.baidu.com/s/1cU04MSxOsm51MY3cYKiz5Q?pwd=eb5g" },
+                    { id: 17, name: "硬件狗狗单文件版", url: "https://pan.baidu.com/s/1V5puhUgh-COG5jdgHu60ZA?pwd=eb5g" },
+                    { id: 18, name: "WinRAR", url: "https://pan.baidu.com/s/1JYDRPbmpNz66hpwDTdsv1A?pwd=eb5g" },
+                    { id: 19, name: "Yoco_0.1.1.alpha_x86", url: "https://pan.baidu.com/s/1B-UPgS3r6viGqpQPUXBsvg?pwd=eb5g" },
+                    { id: 20, name: "OUninstall", url: "https://pan.baidu.com/s/1jsusu7ujtNA4tNiKihP1YA?pwd=eb5g" },
+                    { id: 21, name: "office卸载工具", url: "https://pan.baidu.com/s/1GiL4f51A27URBRkzWjSeug?pwd=eb5g" },
+                    { id: 22, name: "7z", url: "https://pan.baidu.com/s/1tlL1JPRNhNv-wJWDTfeRAg?pwd=eb5g" },
+                    { id: 23, name: "Office2024正式版", url: "https://pan.baidu.com/s/11TS3qX4NpKWxfpImLkNarg?pwd=eb5g" },
+                    { id: 24, name: "DevCpp", url: "https://pan.baidu.com/s/17pOUebMPEpBcR1XN0667bQ?pwd=eb5g" },
+                    { id: 25, name: "SAI 2.0", url: "https://pan.baidu.com/s/1ualu2km6ZSy0RMh7eJS3KA?pwd=eb5g" },
+                    { id: 26, name: "GithubDesktop汉化工具", url: "https://pan.baidu.com/s/10SyZEian14z4dvOoX3mLig?pwd=eb5g" },
+                    { id: 27, name: "彩虹工具箱", url: "https://pan.baidu.com/s/12Goq_cjbwWRsdort6IHCEA?pwd=eb5g" },
+                    { id: 28, name: "wkDownloader1.4.0", url: "https://pan.baidu.com/s/1tPwIzNE8RvzLDXk2enHlsg?pwd=eb5g" },
+                    { id: 29, name: "多引擎实时在线翻译", url: "https://pan.baidu.com/s/1Skmq32ndWRyi3CgmsIXHRA?pwd=eb5g" }
+                ]
+            }
+        ]
+    },
+    {
+        category: "素材资源",
+        subcategories: [
+            {
+                name: "影视素材特效插件等",
+                resources: [
+                    { id: 1, name: "影视素材资源", url: "https://pan.baidu.com/s/11bXfvMHsnAQdpxIcIzNGaQ?pwd=k2jq" },
+                    { id: 2, name: "特效素材", url: "https://pan.baidu.com/s/1UVq89RBpEHFVwgmRLt_92w?pwd=k2jq" }
+                ]
+            },
+            {
+                name: "设计素材",
+                resources: [
+                    { id: 1, name: "1000+Word模板大全", url: "https://pan.baidu.com/s/1KFo5_mMEsgEzqvlOrHGvxA?pwd=1t8t" },
+                    { id: 2, name: "100个Ps笔刷", url: "https://pan.baidu.com/s/1AQo8u1x-9m1X3AsQMN-zLg?pwd=1t8t" }
+                ]
+            },
+            {
+                name: "字体",
+                resources: [
+                    { id: 1, name: "字体资源", url: "https://pan.baidu.com/s/1MFbT9nE2pR0jkaGaDkHQ3w?pwd=gb5i" }
+                ]
+            },
+            {
+                name: "摄影",
+                resources: [
+                    { id: 1, name: "摄影素材", url: "https://pan.baidu.com/s/1MFbT9nE2pR0jkaGaDkHQ3w?pwd=gb5i" }
+                ]
+            },
+            {
+                name: "剪辑素材",
+                resources: [
+                    { id: 1, name: "剪辑素材合集", url: "https://pan.baidu.com/s/1p6qU4r9J7KCBUUfaJLaaoA?pwd=pjtm" }
+                ]
+            },
+            {
+                name: "动漫素材",
+                resources: [
+                    { id: 1, name: "动漫素材合集", url: "https://pan.quark.cn/s/a178f75757a4" }
+                ]
+            }
+        ]
+    },
+    {
+        category: "日常类",
+        subcategories: [
+            {
+                name: "健身运动课",
+                resources: [
+                    { id: 1, name: "Keep运动健身", url: "https://pan.quark.cn/s/70a9e47e6136" }
+                ]
+            },
+            {
+                name: "日常类其他",
+                resources: [
+                    { id: 1, name: "华为手机摄影高级班", url: "https://pan.baidu.com/s/1e6Nj2Ur16GQd1U2eFS9HZA?pwd=hbzi" },
+                    { id: 2, name: "手机自拍教程", url: "https://pan.baidu.com/s/1r9wVlBo3_OXeTr7wsPQeyg?pwd=hbzi" },
+                    { id: 3, name: "零基础学会拍视频", url: "https://pan.baidu.com/s/1IlfoPA2fTGjm6jpw6Q5PpA?pwd=hbzi" },
+                    { id: 4, name: "145道家常菜视频教程", url: "https://pan.baidu.com/s/10O80xvfMEEDpgH1qppmH4Q?pwd=hbzi" },
+                    { id: 5, name: "唱歌教程", url: "https://pan.baidu.com/s/1PO7rT8z1q9bnoCRv9ApNjA?pwd=hbzi" },
+                    { id: 6, name: "美妆秘籍", url: "https://pan.baidu.com/s/1koMERJqR0J8mnznXZQUMJw?pwd=hbzi" },
+                    { id: 7, name: "每周两小时健身", url: "https://pan.baidu.com/s/1kbxCTmyuq8lI_s-JmG1wQw?pwd=hbzi" },
+                    { id: 8, name: "瑜伽零基础", url: "https://pan.baidu.com/s/1mlCdCQzGrfKNu4rOlQBmnA?pwd=hbzi" }
+                ]
+            },
+            {
+                name: "音乐",
+                resources: [
+                    { id: 1, name: "无损音乐合集（131GB）", url: "https://pan.quark.cn/s/48433dc35a73" },
+                    { id: 2, name: "DTS无损音乐700张", url: "https://pan.quark.cn/s/513cb783e2d3" },
+                    { id: 3, name: "DTS无损音乐400张", url: "https://pan.quark.cn/s/b30f3e6f04b4" },
+                    { id: 4, name: "DTS无损音乐300张", url: "https://pan.quark.cn/s/1c34381f2328" }
+                ]
+            },
+            {
+                name: "影视",
+                resources: [
+                    { id: 1, name: "宫崎骏电影合集", url: "https://pan.quark.cn/s/a244a3b5ae4" }
+                ]
+            }
+        ]
+    },
+    {
+        category: "自媒体类",
+        subcategories: [
+            {
+                name: "自媒体入门资料包",
+                resources: [
+                    { id: 1, name: "自媒体入门资料包", url: "https://pan.baidu.com/s/1V9UpAAHYbtyYtEshJJyTbQ?pwd=e378" }
+                ]
+            }
+        ]
+    },
+    {
+        category: "其他",
+        subcategories: [
+            {
+                name: "其他",
+                resources: [
+                    { id: 1, name: "田字格纸，四线格纸", url: "https://pan.baidu.com/s/13bZwYE53xn-yP6lOVMrrHQ?pwd=s98r" },
+                    { id: 2, name: "微信状态动图", url: "https://pan.baidu.com/s/1jrhCU_t3p1ToOszaugfsiw?pwd=s98r" }
+                ]
+            }
+        ]
+    }
+];
 
         document.addEventListener('DOMContentLoaded', function() {
             // 轮播图初始化代码
